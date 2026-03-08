@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisperscape is now eJukebox — Commercial Background Music for Business</title>
+    <meta name="description" content="Whisperscape has rebranded to eJukebox. The same professionally curated, commercially licensed background music service for Australian businesses — now under a new name.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://whisperscape.live/">
+    <meta property="og:title" content="Whisperscape is now eJukebox">
+    <meta property="og:description" content="Same great music. Same great service. Fresh new brand. Visit ejukebox.com.au">
+    <meta property="og:url" content="https://whisperscape.live/">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --color-bg: #0a0a0f;
+            --color-surface: #12121a;
+            --color-surface-2: #1a1a26;
+            --color-border: rgba(255,255,255,0.08);
+            --color-text: #e8e8ed;
+            --color-text-muted: #8888a0;
+            --color-accent: #6366f1;
+            --color-accent-light: #818cf8;
+            --color-accent-glow: rgba(99,102,241,0.25);
+            --color-green: #34d399;
+            --color-green-glow: rgba(52,211,153,0.2);
+            --color-warm: #f59e0b;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ===== BACKGROUND EFFECTS ===== */
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow {
+            position: fixed;
+            width: 600px; height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow-1 {
+            top: -200px; left: -100px;
+            background: var(--color-accent);
+        }
+
+        .bg-glow-2 {
+            bottom: -200px; right: -100px;
+            background: var(--color-green);
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--color-border);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,10,15,0.8);
+        }
+
+        .nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-decoration: line-through;
+            text-decoration-color: var(--color-accent-light);
+            text-decoration-thickness: 2px;
+        }
+
+        .nav-new {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-green);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-new:hover { color: #5eead4; }
+
+        .nav-dot {
+            width: 8px; height: 8px;
+            background: var(--color-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 100px;
+            background: var(--color-accent-glow);
+            border: 1px solid rgba(99,102,241,0.3);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-accent-light);
+            margin-bottom: 32px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-badge svg {
+            width: 16px; height: 16px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 .line-old {
+            color: var(--color-text-muted);
+            display: block;
+        }
+
+        .hero h1 .line-arrow {
+            color: var(--color-accent-light);
+            display: block;
+            font-size: 0.5em;
+            margin: 8px 0;
+        }
+
+        .hero h1 .line-new {
+            background: linear-gradient(135deg, var(--color-green), #5eead4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+            color: var(--color-text-muted);
+            max-width: 640px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--color-green), #2dd4bf);
+            color: #0a0a0f;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 40px var(--color-green-glow);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 60px var(--color-green-glow), 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .hero-cta svg {
+            width: 20px; height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* ===== TRANSITION SECTION ===== */
+        .transition-section {
+            padding: 60px 0 80px;
+        }
+
+        .transition-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 24px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .transition-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+        }
+
+        .transition-grid {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .brand-block {
+            text-align: center;
+        }
+
+        .brand-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .brand-name {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .brand-old .brand-name {
+            color: var(--color-text-muted);
+            text-decoration: line-through;
+            text-decoration-color: rgba(255,255,255,0.2);
+        }
+
+        .brand-new .brand-name {
+            color: var(--color-green);
+        }
+
+        .brand-url {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .brand-new .brand-url a {
+            color: var(--color-green);
+            text-decoration: none;
+        }
+
+        .brand-new .brand-url a:hover {
+            text-decoration: underline;
+        }
+
+        .transition-arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--color-surface-2);
+            border: 1px solid var(--color-border);
+            color: var(--color-accent-light);
+        }
+
+        .transition-arrow svg {
+            width: 24px; height: 24px;
+        }
+
+        /* ===== FEATURES / WHAT STAYS THE SAME ===== */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-accent-light);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-desc {
+            color: var(--color-text-muted);
+            max-width: 600px;
+            font-size: 1.05rem;
+            margin-bottom: 48px;
+            line-height: 1.7;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(99,102,241,0.3);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            background: var(--color-accent-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--color-accent-light);
+        }
+
+        .feature-icon svg {
+            width: 24px; height: 24px;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--color-text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* ===== TESTIMONIAL ===== */
+        .testimonial {
+            padding: 40px 0 80px;
+        }
+
+        .testimonial-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-family: Georgia, serif;
+            font-size: 6rem;
+            color: var(--color-accent);
+            opacity: 0.2;
+            position: absolute;
+            top: 10px; left: 30px;
+            line-height: 1;
+        }
+
+        .testimonial-quote {
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--color-text);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ===== COMPANY INFO ===== */
+        .company-info {
+            padding: 60px 0;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .company-item {
+            padding: 24px;
+        }
+
+        .company-item h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--color-text);
+        }
+
+        .company-item p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== CTA BANNER ===== */
+        .cta-banner {
+            padding: 80px 0;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, var(--color-surface), var(--color-surface-2));
+            border: 1px solid var(--color-border);
+            border-radius: 24px;
+            padding: 64px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at center, var(--color-accent-glow), transparent 70%);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .cta-card h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .cta-card p {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 36px;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .cta-card .hero-cta {
+            position: relative;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .footer p {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--color-accent-light);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .abn {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero { padding: 60px 0 40px; }
+            .transition-card { padding: 32px; }
+            .transition-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .transition-arrow {
+                margin: 0 auto;
+                transform: rotate(90deg);
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-card { padding: 40px 24px; }
+            .testimonial-card { padding: 32px; }
+            .company-grid { grid-template-columns: 1fr; gap: 16px; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-brand { font-size: 1rem; }
+            .nav-new { font-size: 1rem; }
+            .hero-cta { padding: 16px 32px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <span class="nav-brand">Whisperscape</span>
+            <a href="https://ejukebox.com.au" class="nav-new" target="_blank" rel="noopener">
+                <span class="nav-dot"></span>
+                eJukebox
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge animate delay-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4"/><path d="M12 16V8"/></svg>
+                Brand Update
+            </div>
+            <h1 class="animate delay-2">
+                <span class="line-old">Whisperscape</span>
+                <span class="line-arrow">has become</span>
+                <span class="line-new">eJukebox</span>
+            </h1>
+            <p class="hero-subtitle animate delay-3">
+                The same professionally curated, commercially licensed background music you know and love — now under a fresh new name. Same team. Same quality. Same Australian-made service.
+            </p>
+            <a href="https://ejukebox.com.au" class="hero-cta animate delay-4" target="_blank" rel="noopener">
+                Visit eJukebox.com.au
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Transition Visual -->
+    <section class="transition-section">
+        <div class="container">
+            <div class="transition-card animate delay-3">
+                <div class="transition-grid">
+                    <div class="brand-block brand-old">
+                        <p class="brand-label">Previously</p>
+                        <h3 class="brand-name">Whisperscape</h3>
+                        <p class="brand-url">whisperscape.live</p>
+                    </div>
+                    <div class="transition-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </div>
+                    <div class="brand-block brand-new">
+                        <p class="brand-label">Now</p>
+                        <h3 class="brand-name">eJukebox</h3>
+                        <p class="brand-url"><a href="https://ejukebox.com.au" target="_blank" rel="noopener">ejukebox.com.au</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Stays the Same -->
+    <section class="features">
+        <div class="container">
+            <p class="section-label animate">What hasn't changed</p>
+            <h2 class="section-title animate delay-1">Everything you loved, and more</h2>
+            <p class="section-desc animate delay-2">
+                We've only changed the name. The service, the team, and the commitment to world-class commercial music remain exactly the same.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card animate delay-2">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></svg>
+                    </div>
+                    <h3>Live-Streamed Like Radio</h3>
+                    <p>Music streams live from Australia, creating a seamless and cohesive experience — just like Coles Radio or Woolworths Radio.</p>
+                </div>
+                <div class="feature-card animate delay-3">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    </div>
+                    <h3>Professionally Curated</h3>
+                    <p>Real people craft every playlist — not algorithms. Each song is carefully selected and positioned for the perfect flow.</p>
+                </div>
+                <div class="feature-card animate delay-4">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <h3>Dayparting Built In</h3>
+                    <p>Lighter tunes in the morning, upbeat tracks as the day progresses. The right music at the right time, automatically.</p>
+                </div>
+                <div class="feature-card animate delay-3">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <h3>Fully Licensed</h3>
+                    <p>Commercially licensed and legal for public use — unlike Spotify or Apple Music. No separate OneMusic fees required.</p>
+                </div>
+                <div class="feature-card animate delay-4">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                    </div>
+                    <h3>Consistent Volume</h3>
+                    <p>Broadcast-quality audio processing ensures consistent volume across every track. No jarring changes, ever.</p>
+                </div>
+                <div class="feature-card animate delay-5">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Family-Friendly</h3>
+                    <p>Every track is free from explicit content — safe for families and suitable for all age groups, from pubs to medical centres.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="container">
+            <div class="testimonial-card animate delay-2">
+                <p class="testimonial-quote">"Much better music than the other music solution"</p>
+                <p class="testimonial-author">— Diana F., Business Customer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Info -->
+    <section class="company-info">
+        <div class="container">
+            <div class="company-grid">
+                <div class="company-item animate delay-2">
+                    <h4>🇦🇺 Australian Made &amp; Owned</h4>
+                    <p>Proudly operated from Sydney, Australia by Musicbot Pty Ltd.</p>
+                </div>
+                <div class="company-item animate delay-3">
+                    <h4>🎵 Perfect for Any Business</h4>
+                    <p>Pubs, cafés, retail stores, medical centres, dental clinics, and more.</p>
+                </div>
+                <div class="company-item animate delay-4">
+                    <h4>💰 From Just $1/Day</h4>
+                    <p>Flexible plans from free demos to fully custom branded radio stations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-card animate delay-2">
+                <h2>Ready to hear the difference?</h2>
+                <p>Head over to our new home and discover the same great service under our fresh new brand.</p>
+                <a href="https://ejukebox.com.au" class="hero-cta" target="_blank" rel="noopener">
+                    Go to eJukebox.com.au
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© Musicbot Pty Ltd. All services continue at <a href="https://ejukebox.com.au" target="_blank" rel="noopener">ejukebox.com.au</a></p>
+            <p class="abn">ABN: 44 163 918 054 · Sydney, Australia</p>
+        </div>
+    </footer>
+
+    <!-- Scroll animation observer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate').forEach(el => {
+                // Pause animations that aren't in the viewport initially
+                const rect = el.getBoundingClientRect();
+                if (rect.top > window.innerHeight) {
+                    el.style.animationPlayState = 'paused';
+                }
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
